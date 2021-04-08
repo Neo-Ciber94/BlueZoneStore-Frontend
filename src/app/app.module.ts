@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component'
 import { DataTablesModule } from 'angular-datatables';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     HttpClientModule,
     DataTablesModule,
+    SweetAlert2Module.forRoot(),
+    ReactiveFormsModule,
+    FormsModule,
     NgbModule
   ],
   providers: [],

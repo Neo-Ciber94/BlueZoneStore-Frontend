@@ -1,0 +1,10 @@
+.details-text {
+    text-align: left;
+    padding-left: 10px !important;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.3);
+}
+
+/* For some reason this stopped working in boostrap so we set it manually */
+.col-sm-10 > * {
+    border: 2px solid lightgray;
+}
