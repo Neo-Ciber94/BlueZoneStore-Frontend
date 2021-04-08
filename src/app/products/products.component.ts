@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs/internal/Subject';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Product } from '../models/Product';
 import { ProductService } from '../services/product.service';
 
@@ -16,18 +16,33 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.dtOptions = {
+    const options: DataTables.Settings | { buttons: any[] } = {
       pagingType: 'full_numbers',
       language: {
-        search: 'Buscar',
+        search: '',
+        zeroRecords: "No hay resultados",
+        searchPlaceholder: "Buscar..."
       },
       info: false,
       dom:
-        '<"filter-container" Bf>r<"table-container" t><"paginator-container" p>',
+        '<"filter-container" Bf>rt<"paginator-container" p>',
       lengthChange: false,
-      pageLength: 10,
+      pageLength: 6,
+      buttons: [
+        {
+          text: 'Nuevo Producto',
+          className: 'btn btn-primary new-product-btn text-white ',
+          action: () => {
+            alert('CLICK!')
+          }
+        }
+      ],
+      drawCallback: (s) => {
+        jQuery(".paginator-container .paginate_button").addClass("page-btn")
+      }
     };
 
+    this.dtOptions = options as any;
     this.productService.getAll().subscribe((data) => {
       this.products = data;
       this.dtTrigger.next();

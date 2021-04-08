@@ -1,0 +1,99 @@
+table tr,
+th {
+  text-align: center;
+  font-size: 18px;
+}
+
+table {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+  min-width: 100px;
+}
+
+.table-container {
+  margin-top: 60px;
+}
+
+thead {
+  background-color: rgba(50, 50, 50, 0.6);
+  color: white;
+}
+
+thead tr {
+  height: 60px;
+}
+
+#table .table-body tr,
+#table td.dataTables_empty {
+  background-color: rgba(100, 100, 100, 0.3);
+  color: white;
+}
+
+#table .table-body tr:hover {
+  background-color: rgba(210, 252, 255, 0.3);
+}
+
+/* #### Filter #### */
+#table_filter label {
+  color: white;
+  font-size: 18px;
+}
+
+input::placeholder {
+  color: white;
+  opacity: 0.3;
+}
+
+.new-product-btn {
+  height: 40px;
+  width: 200px;
+  background-color: var(--primary) !important;
+  border-radius: 5px !important;
+}
+
+.new-product-btn span {
+  font-size: 15px;
+}
+
+#table_filter input {
+  height: 40px;
+  width: 250px;
+  font-size: 18px;
+  transition-duration: 0.2s;
+  outline: none;
+  border-color: white;
+  color: white;
+  padding: 0 10px;
+}
+
+/* #table_filter, #table_filter label, #table_filter input:focus{
+    width: 100% !important;
+} */
+
+/* #### Paginator #### */
+.paginator-container a.paginate_button.page-btn {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.paginator-container a.paginate_button.page-btn {
+  color: white !important;
+  border-radius: 10px;
+}
+
+.paginator-container a.paginate_button.page-btn.disabled:hover,
+.paginator-container a.paginate_button.page-btn.disabled {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.paginator-container a.paginate_button.page-btn:hover:not(.disabled),
+.paginator-container a.paginate_button.page-btn.current:hover,
+.paginator-container a.paginate_button.page-btn.current {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
+  border-color: transparent;
+  border-radius: 10px;
+}

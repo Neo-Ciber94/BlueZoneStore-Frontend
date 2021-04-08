@@ -8,3 +8,7 @@ body {
     background: rgb(29,50,106);
     background: linear-gradient(90deg, rgba(29,50,106,1) 0%, rgba(23,164,181,1) 100%);
 }
+
+.btn {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
