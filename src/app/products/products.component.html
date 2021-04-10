@@ -1,10 +1,11 @@
 <div class="table-container">
   <table
     id="table"
-    datatable='ng'
+    datatable="ng"
     [dtOptions]="dtOptions"
     [dtTrigger]="dtTrigger"
-    class="hover hidden"
+    class="hover hidden nowrap"
+    style="width: 100%"
   >
     <thead>
       <tr>
@@ -39,7 +40,7 @@
 
 <swal
   #editorSwal
-  title="{{isAdding ? 'Nuevo Producto' : 'Editar Producto'}}"
+  title="{{ isAdding ? 'Nuevo Producto' : 'Editar Producto' }}"
   [width]="'80%'"
   confirmButtonText="Guardar"
   [showCancelButton]="true"
@@ -47,13 +48,20 @@
   [preConfirm]="canConfirm"
   (didClose)="onClose()"
   (confirm)="submit()"
+  [focusConfirm]="false"
+  (didRender)="onRender($event)"
 >
   <form *swalPortal="swalTargets.content" [formGroup]="form">
     <!-- ID -->
     <div *ngIf="isEditing" class="form-group row">
       <label class="col-sm-2 col-form-label text-left">ID</label>
       <div class="col-sm-10">
-        <input type='text'  class="form-control" value="{{ selected?.id }}" readonly />
+        <input
+          type="text"
+          class="form-control"
+          value="{{ selected?.id }}"
+          readonly
+        />
       </div>
     </div>
 
@@ -66,6 +74,7 @@
           type="text"
           class="form-control"
           placeholder="Nombre del producto"
+          autofocus="true"
           required
         />
       </div>
@@ -113,7 +122,10 @@
       </div>
     </div>
 
-    <div *ngIf="error && validated && (form.dirty || form.touched)" class="alert alert-danger">
+    <div
+      *ngIf="error && validated && (form.dirty || form.touched)"
+      class="alert alert-danger"
+    >
       {{ error }}
     </div>
   </form>
@@ -122,14 +134,14 @@
 <swal
   #detailsSwal
   [width]="'80%'"
-  title="{{isDeleting ? 'Eliminar Producto' : 'Ver Producto'}}"
-  [confirmButtonColor]='isDeleting? "red": ""'
-  [confirmButtonText]='isDeleting? "Eliminar": "Editar"'
+  title="{{ isDeleting ? 'Eliminar Producto' : 'Ver Producto' }}"
+  [confirmButtonColor]="isDeleting ? 'red' : ''"
+  [confirmButtonText]="isDeleting ? 'Eliminar' : 'Editar'"
   [showCancelButton]="true"
   cancelButtonText="Cancelar"
-  (confirm)='isDeleting? delete(): openEdit()'
+  (confirm)="isDeleting ? delete() : openEdit()"
   (didClose)="onClose()"
-  (didRender)='onRender($event)'
+  (didRender)="onRender($event)"
 >
   <div *swalPortal="swalTargets.content">
     <!-- ID -->

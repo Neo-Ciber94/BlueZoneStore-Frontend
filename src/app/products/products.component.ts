@@ -95,7 +95,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   rerender(): void {
     this.dtElement.dtInstance.then(async (t: DataTables.Api) => {
       this.products = await this.productService.getAll().toPromise();
-      t.destroy();
+      t.destroy(); 
       this.dtTrigger.next();
     });
   }
@@ -211,7 +211,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.detailsSwal.title = "Eliminar Producto";
         this.detailsSwal.confirmButtonText = 'Eliminar';
         this.detailsSwal.confirmButtonColor = 'red';
-        // this.detailsSwal.confirm.subscribe(() => this.delete());
         this.detailsSwal.fire();
         break;
       case 'details':
@@ -220,7 +219,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
           false
         );
         this.detailsSwal.title = "Ver Producto";
-        // this.detailsSwal.confirm.subscribe(() => this.openEdit());
         this.detailsSwal.fire();
         break;
       default:
@@ -236,7 +234,9 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onRender(event: DidRenderEvent) {
-    jQuery(event.modalElement).find('button.swal2-confirm').addClass('btn btn-danger');
+    if (this.isDeleting) {
+      jQuery(event.modalElement).find('button.swal2-confirm').addClass('btn btn-danger');
+    }
   }
 
   private selectProduct(product: Product, setForm: boolean = true) {
